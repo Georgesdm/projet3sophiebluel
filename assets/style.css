@@ -317,3 +317,7 @@ footer nav ul li {
   #login-form a:hover {
 	text-decoration: underline;
   }
+
+#login-form p {
+	color: red;
+  }
