@@ -47,6 +47,11 @@ table {
 	border-spacing: 0;
 }
 /** end reset css**/
+
+* {
+	background-color: #FFFEF8;
+}
+
 body {
 	max-width: 1140px;
 	margin:auto;
@@ -125,6 +130,32 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+
+.categories {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	margin-bottom: 50px;
+	margin-top: 50px;
+}
+
+#categories button {
+	padding: 10px 15px;
+	cursor: pointer;
+	background-color: #FFFEF8;
+	border: 1px solid #1D6154;
+	border-radius: 60px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #1D6154;
+	font-family: 'Syne';
+}
+#categories button:hover {
+	background-color: #1D6154;
+	color: #FFFEF8;
+}
+
 .gallery {
 	width: 100%;
 	display: grid;
