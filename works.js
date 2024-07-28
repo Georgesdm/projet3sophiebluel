@@ -87,9 +87,9 @@ function filterWorks(category) {
     if (category === 'Tous') {
         displayWorks(allWorks);
     } else {
-        //compare la category name de chaque projet a celle selectionnée
+        //compare la category name de chaque
         const filteredWorks = allWorks.filter(work => work.category.name === category);
-        //appelle displayWorks avec le tableau filtré
         displayWorks(filteredWorks);
     }
 }
+

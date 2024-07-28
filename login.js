@@ -20,6 +20,7 @@ loginForm.addEventListener('submit', function(event) {
     })
     .then(response => response.json())
     .then(data => {
+        console.log('Données reçues:', data);
         if (data.token) {
             // Si la réponse contient un token, la connexion est réussie
             console.log('Token reçu:', data.token); // debug
