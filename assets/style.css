@@ -137,7 +137,6 @@ li:hover {
 }
 #portfolio h2 {
 	text-align: center;
-	margin-bottom: 1em;
 }
 
 .categories {
@@ -321,3 +320,22 @@ footer nav ul li {
 #login-form p {
 	color: red;
   }
+
+
+
+  /* admin */
+#displayAdminButton {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	gap: 20px;
+}
+#editAdminButton {
+	display: flex;
+    align-items: center;
+	border: none;
+	gap: 10px;
+	background-color: transparent;
+	font-weight: 400;
+}
