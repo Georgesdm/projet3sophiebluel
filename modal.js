@@ -5,9 +5,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const openModalButton = document.getElementById('editAdminButton');
     const closeModalButton = document.querySelector('.close');
     const modalGallery = document.getElementById('modalGallery');
+    const addWorkButton = document.getElementById('addWorkButton');
+    const backToGalleryButton = document.querySelector('.past');
+    const modalGalleryView = document.getElementById('modalGalleryView');
+    const addWorkView = document.getElementById('addWorkView');
 
+    //gerer affichage entre les 'pages' de la modal
     openModalButton.addEventListener('click', () => {
         modal.style.display = 'block';
+        modalGalleryView.style.display = 'block';
+        addWorkView.style.display = 'none';
         fetchAndDisplayModalGallery();
     });
 
@@ -19,6 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.target === modal) {
             modal.style.display = 'none';
         }
+    });
+
+    addWorkButton.addEventListener('click', () => {
+        modalGalleryView.style.display = 'none';
+        addWorkView.style.display = 'flex';
+    });
+
+    backToGalleryButton.addEventListener('click', () => {
+        modalGalleryView.style.display = 'block';
+        addWorkView.style.display = 'none';
     });
 
     async function fetchAndDisplayModalGallery() {

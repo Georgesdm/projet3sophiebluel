@@ -459,7 +459,8 @@ footer nav ul li {
 	border: none;
 	border-radius: 60px;
 	font-size: 14px;
-	width: 25%;
+	width: 100%;
+	max-width: 237px;
 	display: flex;
     justify-content: center;
 }
@@ -467,3 +468,116 @@ footer nav ul li {
 #addWorkButton:hover {
 	background-color: #1E4F4D;
   }
+
+
+/*MODAL2 AJOUT D'UN WORK */
+.hidden {
+    display: none;
+}
+
+#addWorkView {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#addPhotoForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+	max-width: 60%;
+}
+
+#addPhotoForm label {
+    font-family: 'Work Sans';
+    font-weight: bold;
+}
+
+#addPhotoForm input,
+#addPhotoForm select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Work Sans';
+}
+
+#addPhotoForm button {
+    background-color: #A7A7A7;
+	font-weight: 700;
+	padding: 10px;
+	background-color: #2C5F5D;
+	color: #fff;
+	border: none;
+	border-radius: 60px;
+	font-size: 14px;
+	width: 100%;
+	max-width: 237px;
+	display: flex;
+    justify-content: center;
+}
+
+#addPhotoForm button:hover {
+    background-color: #144A3A;
+}
+
+.modal-past {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    padding-left: 20px;
+}
+
+.past {
+    cursor: pointer;
+    font-size: 24px;
+    color: #1D6154;
+}
+
+.past:hover {
+    color: #144A3A;
+}
+
+
+.custom-file-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 420px;
+    height: 169px;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #e8f1f6;
+}
+
+.custom-file-upload img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.custom-file-upload span {
+	align-content: center;
+	justify-content: center;
+    font-size: 16px;
+    color: #555;
+	width: 173px;
+	height: 36px;
+	flex-grow: 0;
+	border-radius: 50px;
+	background-color: #cbd6dc;
+}
+
+.custom-file-upload p {
+	margin-top: 15px;
+    font-size: 12px;
+    color: #999;
+}
+
+#workImg {
+    display: none;
+}
+

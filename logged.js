@@ -3,9 +3,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const loginLink = document.getElementById('loginLink');
     const logoutLink = document.getElementById('logoutLink');
+    const editAdminButton = document.getElementById('editAdminButton');
     
     console.log('loginLink:', loginLink); //debug
     console.log('logoutLink:', logoutLink); //debug
+    console.log('editAdminButton:', editAdminButton); //debug
 
     // Vérifier si l'utilisateur est déjà connecté
     function checkLoginStatus() {
@@ -13,12 +15,15 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Token:', token); //debug
         if (token) { //si un token existe = un utilisateur est connecté
             console.log('Utilisateur connecté. Token:', token); //debug
-            loginLink.style.display = 'none'; //enlève le bouton login
-            logoutLink.style.display = 'block'; //display le bouton logout
+            loginLink.style.display = 'none'; //enlève login
+            logoutLink.style.display = 'block'; //display logout
+            editAdminButton.style.display = 'flex';
+
         } else {
             console.log('Aucun utilisateur connecté');
-            loginLink.style.display = 'block'; //display le bouton login
-            logoutLink.style.display = 'none'; //enlève le bouton logout
+            loginLink.style.display = 'block'; //display lelogin
+            logoutLink.style.display = 'none'; //enlève logout
+            editAdminButton.style.display = 'none';
         }
     }
 
