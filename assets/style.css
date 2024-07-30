@@ -377,13 +377,62 @@ footer nav ul li {
 	color: black;
 	font-family: Work Sans;
 	line-height: 30.5px;
+	margin-bottom: 25px;
 }
 
 .modal-gallery {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    padding-top: 10px; /* Ajouter un peu d'espace en haut */
+    max-width: 60%; /* Pour limiter la largeur totale de la galerie */
+    margin: 0 auto; /* Centrer la galerie */
 }
+
+.work-container {
+    position: relative;
+    flex: 1 1 calc(20% - 10px); /* 20% pour 5 éléments par ligne, moins l'espace entre les éléments */
+    max-width: calc(20% - 10px); /* Assurez-vous que les conteneurs ne dépassent pas 20% de la largeur de la galerie */
+    margin: 5px 0; /* Ajoutez de l'espace vertical entre les éléments */
+    box-sizing: border-box; /* Inclut la marge et le padding dans la largeur totale */
+}
+
+.work-container img {
+    width: 100%; /* Assure que l'image occupe tout l'espace du conteneur */
+    height: auto;
+    object-fit: cover; /* Assure que les images gardent leurs proportions */
+}
+
+.delete-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border-radius: 10%;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 17px;
+    line-height: 17px;
+}
+
+.delete-icon:hover {
+    background-color: rgba(255, 0, 0, 0.7);
+}
+
+.line-container {
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+	margin-top: 15px;
+}
+
+.line {
+	width: 420px;
+	height: 1px;
+	background-color: #b3b3b3;
+  }
+
 .close {
     color: #aaa;
     float: right;
@@ -396,3 +445,25 @@ footer nav ul li {
     text-decoration: none;
     cursor: pointer;
 }
+
+.addWork-container {
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+	margin-top: 15px;
+}
+#addWorkButton {
+	font-weight: 700;
+	padding: 10px;
+	background-color: #2C5F5D;
+	color: #fff;
+	border: none;
+	border-radius: 60px;
+	font-size: 14px;
+	width: 25%;
+	display: flex;
+    justify-content: center;
+}
+
+#addWorkButton:hover {
+	background-color: #1E4F4D;
+  }

@@ -10,7 +10,7 @@ let allWorks = [];
 let allCategories = new Set();
 
 // function pour recuperer les works depuis l'api
-async function fetchWorks() {
+export async function fetchWorks() {
     try {
         const apiResponse = await fetch('http://localhost:5678/api/works');
         //console.log(apiresponse) pour debug
@@ -92,4 +92,3 @@ function filterWorks(category) {
         displayWorks(filteredWorks);
     }
 }
-
