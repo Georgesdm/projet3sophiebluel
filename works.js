@@ -12,14 +12,15 @@ let allCategories = new Set();
 // function pour recuperer les works depuis l'api
 export async function fetchWorks() {
     try {
-        const response = await fetch('http://localhost:5678/api/works');
-        if (response.status === 200) {
-            const data = await response.json();
+        const apiResponse = await fetch('http://localhost:5678/api/works');
+        //console.log(apiresponse) pour debug
+        if (apiResponse.status === 200) {
+            const data = await apiResponse.json();
             allWorks = data;
             displayWorks(allWorks);
         } else {
             // Si le code de statut n'est pas 200
-            throw new Error('Erreur' + response.status);
+            throw new Error('Erreur réseau : ' + apiResponse.status);
         }
     } catch (error) {
         console.error('Problème opération fetch:', error);

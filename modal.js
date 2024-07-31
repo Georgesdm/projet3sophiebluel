@@ -170,6 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!file || !title || !category) { //message erreur
             console.log('Formulaire incomplet');
             formError.style.display = 'block';
+            formError.innerText = 'Tous les champs sont obligatoires';
             return;
         } else {
             formError.style.display = 'none';
