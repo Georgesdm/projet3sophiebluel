@@ -12,9 +12,12 @@
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
+	<div id="editModeBar" class="edit-mode-bar">
+		<i class="fa-regular fa-pen-to-square"></i> Mode édition
+	</div>
 	<header>
 		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-		<nav>
+		<nav> 
 			<ul>
 				<a href="#portfolio"><li>projets</li></a>
 				<a href="#contact"><li>contact</li></a>
@@ -44,7 +47,7 @@
 				<button id="editAdminButton" style="display: none";><i class="fa-regular fa-pen-to-square"></i>modifier</button>
 			</div>
 			<div class="categories" id="categories"></div>
-			<div class="gallery" id="gallery"></div>
+			<div id="gallery-container"></div><div class="gallery" id="gallery"></div></div>
 		</section>
 		<script type="module" src="works.js"></script>	
 		
