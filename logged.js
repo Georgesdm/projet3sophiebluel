@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('logged.js est lancé'); //debug
+    console.log('logged.js est lancé');
 
     const loginLink = document.getElementById('loginLink');
     const logoutLink = document.getElementById('logoutLink');

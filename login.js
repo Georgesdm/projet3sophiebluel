@@ -22,13 +22,13 @@ loginForm.addEventListener('submit', function(event) {
     .then(data => {
         console.log('Données reçues:', data);
         if (data.token) {
-            // Si la réponse contient un token, la connexion est réussie
-            console.log('Token reçu:', data.token); // debug
-            localStorage.setItem('authToken', data.token); // stock le token
-            console.log('Token stocké dans localStorage'); // debug
-            window.location.href = 'index.html'; // redirection vers index
+            //token existe : connexion réussie
+            console.log('Token reçu:', data.token);
+            localStorage.setItem('authToken', data.token); //stock le token
+            console.log('Token stocké dans localStorage');
+            window.location.href = 'index.html'; //redirection vers index
         } else {
-            // Si la connexion a échoué, afficher un message d'erreur
+            //message erreur
             errorMessage.innerText = 'E-mail ou mot de passe incorrect.';
         }
     })
