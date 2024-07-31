@@ -336,6 +336,7 @@ footer nav ul li {
 	gap: 10px;
 	background-color: transparent;
 	font-weight: 400;
+	cursor: pointer;
 }
 
 /* Styles pour la modale */
@@ -377,9 +378,10 @@ footer nav ul li {
 
 .past {
 	display: none;
-    color: #aaa;
+    color: #000000;
     float: left;
     font-size: 20px;
+	cursor: pointer;
 }
 
 .past:hover {
@@ -392,9 +394,10 @@ footer nav ul li {
 	justify-content: flex-end;
 }
 .close {
-    color: #aaa;
+    color: #000000;
     float: right;
     font-size: 28px;
+	cursor: pointer;
 }
 
 .close:hover {
@@ -432,7 +435,6 @@ footer nav ul li {
     margin: 5px 0; 
     box-sizing: border-box; 
 }
-
 .work-container img {
     width: 100%;
     height: auto;
@@ -487,6 +489,7 @@ footer nav ul li {
 	max-width: 237px;
 	display: flex;
     justify-content: center;
+	cursor: pointer;
 }
 
 #addWorkButton:hover {
