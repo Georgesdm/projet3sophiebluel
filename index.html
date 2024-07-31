@@ -50,14 +50,15 @@
 		
 		<!-- Structure de la modale -->
 		<div id="modalContainer" class="modal">
-			<div class="modal-past">
-				<span class="past"><i class="fa-solid fa-arrow-left"></i></span>
-			</div>
 			<div class="modal-content">
-				<div class="modal-close">
-					<span class="close">&times;</span>
+				<div class="modal-navigation">
+					<div class="modal-past">
+						<span class="past"><i class="fa-solid fa-arrow-left"></i></span>
+					</div>
+					<div class="modal-close">
+						<span class="close">&times;</span>
+					</div>
 				</div>
-
 				<div id="modalGalleryView">
 					<div class="modal-title">
 						<h2>Galerie photo</h2>
@@ -77,17 +78,18 @@
 					<div class="modal-title">
 						<h2>Ajout photo</h2>
 					</div>
-					<form id="addPhotoForm">
-						<label for="workImg" class="custom-file-upload">
-							<img src="./assets/icons/placeholder-image.png" alt="Placeholder image" />
-							<span>+ Ajouter photo</span>
-							<p>jpg, png : 4mo max</p>
+					<form id="addPhotoForm" method="post" enctype="multipart/form-data">
+							<label for="workImg" class="custom-file-upload">
+							<img id="previewImg" src="" alt="Preview" style="display:none;" />
+							<img id="placeholderImg" src="./assets/icons/placeholder-image.png" alt="Placeholder image" />
+							<span id="addPhotoText">+ Ajouter photo</span>
+							<p id="maxSizeText">jpg, png : 4mo max</p>
 						</label>
-						<input type="file" id="workImg" name="workImg" accept="image/*" required>
+						<input type="file" id="workImg" name="workImg" accept="image/*">
 						<label for="workTitle">Titre</label>
-						<input type="text" id="workTitle" name="workTitle" required>
+						<input type="text" id="workTitle" name="workTitle">
 						<label for="workCategory">Catégorie</label>
-						<select id="workCategory" name="workCategory" required>
+						<select id="workCategory" name="workCategory">
 							<option value="1">Objets</option>
 							<option value="2">Appartements</option>
 							<option value="3">Hotels & restaurants</option>
@@ -96,10 +98,10 @@
 							<div class="line"></div>
 						</div>
 						<div class="addWork-container">
-							<button id="addWorkButton">Valider</button>
+							<button id="addWorkButton" type="submit">Valider</button>
 						</div>
-
 					</form>
+					<div id="formError">Tous les champs sont obligatoires</div>
 				</div>
 			</div>
 		</div>

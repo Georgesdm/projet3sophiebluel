@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 //allWorks = tableau contenant tous les 'work' from 'works'
 let allWorks = [];
-//initialise un Set vide pour stocker les noms des catégories sans doublons
+//initialise un Set vide
 let allCategories = new Set();
 
 // function pour recuperer les works depuis l'api
@@ -16,8 +16,8 @@ export async function fetchWorks() {
         //console.log(apiresponse) pour debug
         if (apiResponse.status === 200) {
             const data = await apiResponse.json();
-            allWorks = data; // Stocke les travaux dans la variable globale
-            displayWorks(allWorks); // Affiche tous les travaux au chargement initial
+            allWorks = data;
+            displayWorks(allWorks);
         } else {
             // Si le code de statut n'est pas 200
             throw new Error('Erreur réseau : ' + apiResponse.status);
@@ -36,8 +36,8 @@ function displayWorks(works) {
   
     works.forEach(work => {
       const project = document.createElement('project');
-      console.log(project) //pour debug
-      // Remplit l'élément avec une image et une légende
+      //console.log(project)
+      //ajoute image+légende
       project.innerHTML = `
         <img src="${work.imageUrl}" alt="${work.title}">
         <figcaption>${work.title}</figcaption>
@@ -48,16 +48,16 @@ function displayWorks(works) {
     });
 }
 
-// Fonction pour récupérer les catégories depuis l'API
+//récupérer les catégories depuis l'API
 async function fetchCategories() {
     try {
         const apiResponse = await fetch('http://localhost:5678/api/categories');
         if (apiResponse.status === 200) {
             const data = await apiResponse.json();
-            // Utilisation de Set pour obtenir une liste de catégories uniques
-            // `data.map(category => category.name)` crée un tableau de noms de catégories
+            //set=liste de catégories uniques
+            //data.map(category => category.name)crée un tableau de noms de catégories
             allCategories = ['Tous', ...new Set(data.map(category => category.name))];
-            // Génère le menu des catégories en utilisant la liste unique
+            //genere menu catégories
             generateCategoryMenu(allCategories);
         } else {
             throw new Error('Erreur réseau : ' + apiResponse.status);
@@ -67,14 +67,14 @@ async function fetchCategories() {
     }
 }
 
-// Fonction pour générer le menu des catégories
+//générer le menu des catégories
 function generateCategoryMenu(categories) {
     const categoryContainer = document.getElementById('categories');
-     // Vide le contenu actuel
+     //vide contenu
     categoryContainer.innerHTML = '';
 
     categories.forEach(category => {
-        // Crée un bouton pour chaque catégorie
+        //crée un bouton pour chaque catégorie
         const button = document.createElement('button');
         button.innerText = category;
         button.addEventListener('click', () => filterWorks(category));
