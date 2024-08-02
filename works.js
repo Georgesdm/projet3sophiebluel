@@ -1,92 +1,71 @@
-// Attend que le contenu du document soit complètement chargé avant d'exécuter le code à l'intérieur
+// works.js
+import { fetchWorks, fetchCategories } from './callapi.js';
+
 document.addEventListener('DOMContentLoaded', async () => {
-    await fetchWorks();
-    await fetchCategories();
+    try {
+        await initializePage();
+    } catch (error) {
+        console.error('Erreur lors du chargement des données:', error);
+    }
 });
 
-//allWorks = tableau contenant tous les 'work' from 'works'
-let allWorks = [];
-//initialise un Set vide
-let allCategories = new Set();
+// Fonction pour initialiser la page
+async function initializePage() {
+    const works = await fetchWorks();
+    allWorks = works;
+    displayWorks(allWorks);
 
-// function pour recuperer les works depuis l'api
-export async function fetchWorks() {
-    try {
-        const apiResponse = await fetch('http://localhost:5678/api/works');
-        //console.log(apiresponse) pour debug
-        if (apiResponse.status === 200) {
-            const data = await apiResponse.json();
-            allWorks = data;
-            displayWorks(allWorks);
-        } else {
-            // Si le code de statut n'est pas 200
-            throw new Error('Erreur réseau : ' + apiResponse.status);
-        }
-    } catch (error) {
-        console.error('Problème opération fetch:', error);
-    }
+    const categories = await fetchCategories();
+    allCategories = ['Tous', ...new Set(categories.map(category => category.name))];
+    generateCategoryMenu(allCategories);
 }
 
-  // afficher les travaux dans la galerie
+let allWorks = [];
+let allCategories = new Set();
+
+// Fonction pour afficher les travaux
 function displayWorks(works) {
     const gallery = document.getElementById('gallery');
-    // Vide le contenu actuel de la galerie pour éviter les doublons
     gallery.innerHTML = '';
-  
     works.forEach(work => {
-      const project = document.createElement('project');
-      //console.log(project)
-      //ajoute image+légende
-      project.innerHTML = `
-        <img src="${work.imageUrl}" alt="${work.title}">
-        <figcaption>${work.title}</figcaption>
-      `;
-  
-      // Ajoute l'élément 'project' à la galerie
-      gallery.appendChild(project);
+        const project = createProjectElement(work);
+        gallery.appendChild(project);
     });
 }
 
-//récupérer les catégories depuis l'API
-async function fetchCategories() {
-    try {
-        const apiResponse = await fetch('http://localhost:5678/api/categories');
-        if (apiResponse.status === 200) {
-            const data = await apiResponse.json();
-            //set=liste de catégories uniques
-            //data.map(category => category.name)crée un tableau de noms de catégories
-            allCategories = ['Tous', ...new Set(data.map(category => category.name))];
-            //genere menu catégories
-            generateCategoryMenu(allCategories);
-        } else {
-            throw new Error('Erreur réseau : ' + apiResponse.status);
-        }
-    } catch (error) {
-        console.error('Problème opération fetch:', error);
-    }
+// Fonction pour créer un élément de projet
+function createProjectElement(work) {
+    const project = document.createElement('project');
+    project.innerHTML = `
+        <img src="${work.imageUrl}" alt="${work.title}">
+        <figcaption>${work.title}</figcaption>
+    `;
+    return project;
 }
 
-//générer le menu des catégories
+// Fonction pour générer le menu des catégories
 function generateCategoryMenu(categories) {
     const categoryContainer = document.getElementById('categories');
-     //vide contenu
     categoryContainer.innerHTML = '';
-
     categories.forEach(category => {
-        //crée un bouton pour chaque catégorie
-        const button = document.createElement('button');
-        button.innerText = category;
-        button.addEventListener('click', () => filterWorks(category));
+        const button = createCategoryButton(category);
         categoryContainer.appendChild(button);
     });
 }
 
-//filtrer les travaux par catégorie au click
+// Fonction pour créer un bouton de catégorie
+function createCategoryButton(category) {
+    const button = document.createElement('button');
+    button.innerText = category;
+    button.addEventListener('click', () => filterWorks(category));
+    return button;
+}
+
+// Fonction pour filtrer les travaux par catégorie
 function filterWorks(category) {
     if (category === 'Tous') {
         displayWorks(allWorks);
     } else {
-        //compare la category name de chaque
         const filteredWorks = allWorks.filter(work => work.category.name === category);
         displayWorks(filteredWorks);
     }
