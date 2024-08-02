@@ -1,67 +1,60 @@
-// works.js
 import { fetchWorks, fetchCategories } from './callapi.js';
 
+// Attend que le contenu du document soit complètement chargé avant d'exécuter le code à l'intérieur
 document.addEventListener('DOMContentLoaded', async () => {
-    try {
-        await initializePage();
-    } catch (error) {
-        console.error('Erreur lors du chargement des données:', error);
-    }
+    await initGallery();
 });
-
-// Fonction pour initialiser la page
-async function initializePage() {
-    const works = await fetchWorks();
-    allWorks = works;
-    displayWorks(allWorks);
-
-    const categories = await fetchCategories();
-    allCategories = ['Tous', ...new Set(categories.map(category => category.name))];
-    generateCategoryMenu(allCategories);
-}
 
 let allWorks = [];
 let allCategories = new Set();
 
-// Fonction pour afficher les travaux
+// Initialiser Gallery (filtres + works)
+async function initGallery() {
+    try {
+        allWorks = await fetchWorks();
+        displayWorks(allWorks);
+        const categories = await fetchCategories();
+        allCategories = ['Tous', ...new Set(categories.map(category => category.name))];
+        generateCategoryMenu(allCategories);
+    } catch (error) {
+        console.error('Erreur initialisation Gallery:', error);
+    }
+}
+
+// Afficher les works dans la galerie
 function displayWorks(works) {
     const gallery = document.getElementById('gallery');
-    gallery.innerHTML = '';
+    gallery.innerHTML = ''; // Vide le contenu actuel de la galerie
+
     works.forEach(work => {
-        const project = createProjectElement(work);
+        const project = document.createElement('project');
+        project.innerHTML = `
+            <img src="${work.imageUrl}" alt="${work.title}">
+            <figcaption>${work.title}</figcaption>
+        `;
         gallery.appendChild(project);
     });
 }
 
-// Fonction pour créer un élément de projet
-function createProjectElement(work) {
-    const project = document.createElement('project');
-    project.innerHTML = `
-        <img src="${work.imageUrl}" alt="${work.title}">
-        <figcaption>${work.title}</figcaption>
-    `;
-    return project;
+export async function fetchAndDisplayWorks() {
+    allWorks = await fetchWorks();
+    displayWorks(allWorks);
 }
 
-// Fonction pour générer le menu des catégories
+// Générer le menu des catégories
 function generateCategoryMenu(categories) {
     const categoryContainer = document.getElementById('categories');
-    categoryContainer.innerHTML = '';
+    categoryContainer.innerHTML = ''; // Vide le contenu actuel
+
     categories.forEach(category => {
-        const button = createCategoryButton(category);
+        const button = document.createElement('button');
+        button.innerText = category;
+        button.addEventListener('click', () => filterWorks(category));
         categoryContainer.appendChild(button);
     });
 }
 
-// Fonction pour créer un bouton de catégorie
-function createCategoryButton(category) {
-    const button = document.createElement('button');
-    button.innerText = category;
-    button.addEventListener('click', () => filterWorks(category));
-    return button;
-}
-
-// Fonction pour filtrer les travaux par catégorie
+// Filtrer les travaux par catégorie au clic
 function filterWorks(category) {
     if (category === 'Tous') {
         displayWorks(allWorks);
