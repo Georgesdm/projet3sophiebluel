@@ -655,6 +655,10 @@ footer nav ul li {
 		text-align: center;
     }
 
+	#introduction article {
+		width: 80%;
+	}
+
     #introduction img {
         width: 80%;
 		margin-bottom: 25px;
@@ -704,6 +708,10 @@ footer nav ul li {
         flex-direction: column;
 		text-align: center;
     }
+
+	#introduction article {
+		width: 80%;
+	}
 
     #introduction img {
         width: 80%;
