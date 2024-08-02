@@ -84,6 +84,7 @@ header {
 	justify-content: space-between;
 	margin: 50px 0
 }
+
 section {
 	margin: 50px 0
 }
@@ -195,17 +196,18 @@ li:hover {
 .gallery {
 	width: 85%;
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	gap: 16px; /* Espacement entre les éléments */
 	margin: 0 auto;
-}
+	padding: 16px 0; /* Espacement au-dessus et en-dessous de la galerie */
+  }
 
-.gallery img {
+  .gallery img {
 	width: 100%;
-	max-width: 305px;
-	height: 100%;
-	max-height: 407px;
-	object-fit: cover;
-}
+	height: auto;
+	object-fit: cover; /* Pour s'assurer que les images remplissent bien leur conteneur */
+  }
+
 .gallery figcaption {
 	font-weight: 400;
 	padding-top: 10px;
@@ -633,4 +635,126 @@ footer nav ul li {
 	display: none;
 	color: red;
 	padding-top: 15px;
+}
+
+/* Styles pour les tablettes */
+@media (min-width: 768px) and (max-width: 1024px) {
+    body {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+
+    header {
+        align-items: center;
+		gap: 25px;
+
+    }
+
+    #introduction {
+        flex-direction: column;
+		text-align: center;
+    }
+
+    #introduction img {
+        width: 80%;
+		margin-bottom: 25px;
+    }
+
+    #contact {
+        width: 80%;
+    }
+
+    .gallery {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+    .modal-content {
+        width: 70%;
+    }
+
+	.modal-gallery {
+		gap: 0px;
+		max-width: 80%;
+	}
+
+	.work-container {
+		position: relative;
+		flex: 1 1 calc(30% - 1px);
+		max-width: calc(30% - 1px);
+		margin: 5px 0;
+		box-sizing: border-box;
+	  }
+}
+
+/* Styles pour les mobiles */
+@media (max-width: 767px) {
+    body {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: center;
+		gap: 25px;
+    }
+
+
+    #introduction {
+        flex-direction: column;
+		text-align: center;
+    }
+
+    #introduction img {
+        width: 80%;
+    }
+
+    #contact {
+        width: 80%;
+    }
+
+    .gallery {
+		grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+
+	#introduction figure {
+		margin-bottom: 25px;
+		width: 80%;
+	}
+
+	.categories {
+        width: 80%;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
+		margin: 0 auto;
+    	padding: 25px;
+	}
+
+	#categories button {
+		flex: 1 1 calc(50% - 16px); /* Chaque bouton occupe 50% moins l'espace du gap */
+		box-sizing: border-box; /* Inclure le padding et la bordure dans la largeur totale */
+		margin: 0; /* Supprimer les marges par défaut */
+		padding: 10px 20px; /* Espacement interne */
+		text-align: center; /* Centrer le texte */
+		cursor: pointer; /* Afficher le curseur de pointeur au survol */
+	  }
+
+    .modal-content {
+        width: 70%;
+    }
+
+	.modal-gallery {
+		gap: 0px;
+		max-width: 80%;
+	}
+
+	.work-container {
+		flex: 1 1 calc(50% - 10px);
+		max-width: calc(50% - 10px);
+	  }
 }

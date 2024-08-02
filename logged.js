@@ -37,9 +37,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     //gestion déconnexion
     logoutLink.addEventListener('click', function(event) {
-        event.preventDefault(); //enlève comportement par défaut du lien
         localStorage.removeItem('authToken'); //delete Token
         console.log('Utilisateur déconnecté');
+        header.style.marginTop = '50px 0'; // Réinitialise la marge supérieure du header
         checkLoginStatus();
     });
 });
